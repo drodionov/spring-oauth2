@@ -10,3 +10,6 @@ spring:
           github:
             clientId: ${SPRING_DEMO_GITHUB_CLIENT_ID}
             clientSecret: ${SPRING_DEMO_GITHUB_CLIENT_SECRET}
+          google:
+            clientId: ${SPRING_DEMO_GOOGLE_CLIENT_ID}
+            clientSecret: ${SPRING_DEMO_GOOGLE_CLIENT_SECRET}

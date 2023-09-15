@@ -15,6 +15,9 @@
 <h1>Login</h1>
 <div class="container unauthenticated">
   With GitHub: <a href="/oauth2/authorization/github">click here</a>
+  <div>
+    With Google: <a href="/oauth2/authorization/google">click here</a>
+  </div>
 </div>
 <div class="container authenticated" style="display: none">
   Logged in as: <span id="user"></span>
@@ -44,8 +47,6 @@
     $(".authenticated").show()
   })
   let logout = function () {
-    console.log("We are here!")
-    debugger
     $.post("/logout", function () {
       $("#user").html('')
       $(".unauthenticated").show()
