@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: trace
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${SPRING_DEMO_GITHUB_CLIENT_ID}
+            clientSecret: ${SPRING_DEMO_GITHUB_CLIENT_SECRET}

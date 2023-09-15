@@ -25,6 +25,10 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-oauth2-client</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>jquery</artifactId>
       <version>${lib.webjars.jquery.version}</version>
