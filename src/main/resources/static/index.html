@@ -12,21 +12,47 @@
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>SpringBoot & OAuth2 Demo</h1>
-<div class="container">
-  <div class="container unauthenticated">
-    With GitHub: <a href="/oauth2/authorization/github">click here</a>
-  </div>
-  <div class="container authenticated" style="display:none">
-    Logged in as: <span id="user"></span>
+<h1>Login</h1>
+<div class="container unauthenticated">
+  With GitHub: <a href="/oauth2/authorization/github">click here</a>
+</div>
+<div class="container authenticated" style="display: none">
+  Logged in as: <span id="user"></span>
+  <div>
+    <button onClick="logout()" class="btn btn-primary">Logout</button>
   </div>
 </div>
+<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
 <script type="text/javascript">
-  $.get("/user", function(data) {
-    $("#user").html(data.login);
+  $.get("/csrf", (data) => {
+    Cookies.set('XSRF-TOKEN-SECURED', data.token)
+  })
+  $.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+      if (settings.type == 'POST' || settings.type == 'PUT'
+          || settings.type == 'DELETE') {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/
+        .test(settings.url))) {
+          xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get('XSRF-TOKEN-SECURED'))
+        }
+      }
+    }
+  })
+  $.get("/user", function (data) {
+    $("#user").html(data.login)
     $(".unauthenticated").hide()
     $(".authenticated").show()
-  });
+  })
+  let logout = function () {
+    console.log("We are here!")
+    debugger
+    $.post("/logout", function () {
+      $("#user").html('')
+      $(".unauthenticated").show()
+      $(".authenticated").hide()
+    })
+    return true
+  }
 </script>
 </body>
 </html>

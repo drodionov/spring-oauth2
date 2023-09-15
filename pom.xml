@@ -18,6 +18,7 @@
     <java.version>17</java.version>
     <lib.webjars.jquery.version>3.4.1</lib.webjars.jquery.version>
     <lib.webjars.bootstrap.version>4.3.1</lib.webjars.bootstrap.version>
+    <lib.webjars.js.cookie>2.1.0</lib.webjars.js.cookie>
   </properties>
   <dependencies>
     <dependency>
@@ -41,6 +42,11 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>webjars-locator-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>js-cookie</artifactId>
+      <version>${lib.webjars.js.cookie}</version>
     </dependency>
 
     <dependency>
